@@ -1,4 +1,3 @@
-[![Go Report Card](https://goreportcard.com/badge/github.com/etherlabsio/go-m3u8)](https://goreportcard.com/report/github.com/etherlabsio/go-m3u8)
 
 # go-m3u8
 Golang package for m3u8 forked from and updated to mee my needs (github.com/etherlabsio/go-m3u8/m3u8)
