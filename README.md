@@ -4,7 +4,7 @@
 [![GoDoc](https://godoc.org/github.com/etherlabsio/go-m3u8/m3u8?status.svg)](https://godoc.org/github.com/etherlabsio/go-m3u8/m3u8)
 
 # go-m3u8
-Golang package for m3u8 (ported m3u8 gem https://github.com/sethdeckard/m3u8)
+Golang package for m3u8 forked from and updated to mee my needs (github.com/etherlabsio/go-m3u8/m3u8)
 
 `go-m3u8` provides easy generation and parsing of m3u8 playlists defined in the HTTP Live Streaming (HLS) Internet Draft published by Apple.
 * The library completely implements version 20 of the HLS Internet Draft.
@@ -12,15 +12,16 @@ Golang package for m3u8 (ported m3u8 gem https://github.com/sethdeckard/m3u8)
 * Provides ability to write playlist to a string via String()
 * Distinction between a master and media playlist is handled automatically (single Playlist class).
 * Optionally, the library can automatically generate the audio/video codecs string used in the CODEC attribute based on specified H.264, AAC, or MP3 options (such as Profile/Level).
+* The library will also parse an m3u8 from URL 
 
 ## Installation
-`go get github.com/etherlabsio/go-m3u8`
+`go get github.com/fizzywhizbang/go-m3u8`
 
 ## Usage (creating playlists)
 Create a master playlist and child playlists for adaptive bitrate streaming:
 ```go
 import (
-    "github.com/etherlabsio/go-m3u8/m3u8"
+    "github.com/fizzywhizbang/go-m3u8/m3u8"
     "github.com/AlekSi/pointer"
 )
 
@@ -96,6 +97,10 @@ Read from string
 ```go
 playlist, err := m3u8.ReadString(string)
 ```
+Read from URL
+```go
+playlist, err := m3u8.ReadFromURL(url)
+```
 Read from generic `io.Reader`
 ```go
 playlist, err := m3u8.Read(reader)
@@ -118,7 +123,7 @@ Codecs:
 Not all Levels and Profiles can be combined and validation is not currently implemented, consult H.264 documentation for further details.
 
 ## Contributing
-1. Fork it https://github.com/etherlabsio/go-m3u8/fork
+1. Fork it https://github.com/fizzywhizbang/go-m3u8/fork
 2. Create your feature branch `git checkout -b my-new-feature`
 3. Run tests `go test ./test/...`, make sure they all pass and new features are covered
 4. Commit your changes `git commit -am "Add new features"`
@@ -126,6 +131,6 @@ Not all Levels and Profiles can be combined and validation is not currently impl
 6. Create a new Pull Request
 
 ## License
-MIT License - See [LICENSE](https://github.com/etherlabsio/go-m3u8/blob/master/LICENSE) for details
+MIT License - See [LICENSE](https://github.com/fizzywhizbang/go-m3u8/blob/master/LICENSE) for details
 
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fetherlabsio%2Fgo-m3u8.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fetherlabsio%2Fgo-m3u8?ref=badge_large)

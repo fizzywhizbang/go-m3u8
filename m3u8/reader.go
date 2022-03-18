@@ -2,9 +2,12 @@ package m3u8
 
 import (
 	"bytes"
+	"crypto/tls"
 	"fmt"
 	"io"
 	"io/ioutil"
+	"log"
+	"net/http"
 	"strings"
 )
 
@@ -12,6 +15,39 @@ type state struct {
 	open        bool
 	currentItem Item
 	master      bool
+}
+
+//ReadURL will read the m3u8 from a url and return as a playlist
+func ReadFromURL(url string) (*Playlist, error) {
+
+	config := &tls.Config{
+		InsecureSkipVerify: true,
+	}
+
+	tr := &http.Transport{TLSClientConfig: config}
+	client := &http.Client{Transport: tr}
+
+	req, err := http.NewRequest(http.MethodGet, url, nil)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	req.Header.Set("User-Agent", "Mozilla/5.0")
+	res, getErr := client.Do(req)
+	if getErr != nil {
+		log.Fatal(getErr)
+	}
+
+	if res.Body != nil {
+		defer res.Body.Close()
+	}
+
+	body, readErr := ioutil.ReadAll(res.Body)
+	if readErr != nil {
+		log.Fatal(readErr)
+	}
+
+	return Read(strings.NewReader(string(body)))
 }
 
 // ReadString parses a text string and returns a playlist
