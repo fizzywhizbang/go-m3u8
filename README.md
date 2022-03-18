@@ -1,7 +1,4 @@
-[![Build Status](https://travis-ci.org/etherlabsio/go-m3u8.svg?branch=master)](https://travis-ci.org/etherlabsio/go-m3u8)
-[![codecov](https://codecov.io/gh/etherlabsio/go-m3u8/branch/master/graph/badge.svg)](https://codecov.io/gh/etherlabsio/go-m3u8)
 [![Go Report Card](https://goreportcard.com/badge/github.com/etherlabsio/go-m3u8)](https://goreportcard.com/report/github.com/etherlabsio/go-m3u8)
-[![GoDoc](https://godoc.org/github.com/etherlabsio/go-m3u8/m3u8?status.svg)](https://godoc.org/github.com/etherlabsio/go-m3u8/m3u8)
 
 # go-m3u8
 Golang package for m3u8 forked from and updated to mee my needs (github.com/etherlabsio/go-m3u8/m3u8)
